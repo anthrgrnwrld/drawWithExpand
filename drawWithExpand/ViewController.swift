@@ -103,7 +103,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {  //UIScrollViewDe
             let lastPointForCanvasSize = convertPointForCanvasSize(originalPoint: lastPoint!, canvasSize: canvas.size)
             
             bezierPath.lineCapStyle = .Round                            //描画線の設定 端を丸くする
-            bezierPath.lineWidth = 20                                   //描画線の太さ
+            bezierPath.lineWidth = defaultLineWidth                     //描画線の太さ
             bezierPath.moveToPoint(lastPointForCanvasSize)
             
         case .Changed:
