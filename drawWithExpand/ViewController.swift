@@ -12,13 +12,16 @@ class ViewController: UIViewController, UIScrollViewDelegate {  //UIScrollViewDe
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var canvasView: UIImageView!
+    @IBOutlet weak var sliderValue: UISlider!
     
     var lastPoint: CGPoint?                 //直前のタッチ座標の保存用
     var lineWidth: CGFloat?                 //描画用の線の太さの保存用
-    var bezierPath = UIBezierPath()         //お絵描きに使用
+    //var bezierPath = UIBezierPath()         //お絵描きに使用
+    var bezierPath: UIBezierPath?           //お絵描きに使用
     var drawColor = UIColor()               //描画色の保存用
     
-    let defaultLineWidth: CGFloat = 10.0    //デフォルトの線の太さ
+    //let defaultLineWidth: CGFloat = 10.0    //デフォルトの線の太さ
+    let scale = CGFloat(30)                   //線の太さに変換するためにSlider値にかける係数
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +55,9 @@ class ViewController: UIViewController, UIScrollViewDelegate {  //UIScrollViewDe
         let myDraw = UIPanGestureRecognizer(target: self, action: #selector(ViewController.drawGesture(_:)))
         myDraw.maximumNumberOfTouches = 1
         self.scrollView.addGestureRecognizer(myDraw)
+        
+        drawColor = UIColor.blackColor()                    //draw色を黒色に決定する
+        lineWidth = CGFloat(sliderValue.value) * scale      //線の太さを決定する
         
         //実際のお絵描きで言うキャンバスの準備 (=何も描かれていないUIImageの作成)
         prepareCanvas()
@@ -90,8 +96,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {  //UIScrollViewDe
             fatalError("self.pictureView.image not found")
         }
 
-        lineWidth = defaultLineWidth                                    //描画用の線の太さを決定する
-        drawColor = UIColor.blackColor()                                //draw色を決定する
+        //lineWidth = defaultLineWidth                                    //描画用の線の太さを決定する
+        //drawColor = UIColor.blackColor()                                //draw色を決定する
         let touchPoint = drawGesture.locationInView(canvasView)         //タッチ座標を取得
         
         switch drawGesture.state {
@@ -102,16 +108,26 @@ class ViewController: UIViewController, UIScrollViewDelegate {  //UIScrollViewDe
             //LastPointをキャンバスサイズ基準にConvert
             let lastPointForCanvasSize = convertPointForCanvasSize(originalPoint: lastPoint!, canvasSize: canvas.size)
             
-            bezierPath.lineCapStyle = .Round                            //描画線の設定 端を丸くする
-            bezierPath.lineWidth = defaultLineWidth                     //描画線の太さ
-            bezierPath.moveToPoint(lastPointForCanvasSize)
+            bezierPath = UIBezierPath()
+            guard let bzrPth = bezierPath else {
+                fatalError("bezierPath Error")
+            }
+            
+            bzrPth.lineCapStyle = .Round                            //描画線の設定 端を丸くする
+            //bzrPth.lineWidth = defaultLineWidth                     //描画線の太さ
+            bzrPth.lineWidth = lineWidth!                           //描画線の太さ
+            bzrPth.moveToPoint(lastPointForCanvasSize)
             
         case .Changed:
             
             let newPoint = touchPoint                                   //タッチポイントを最新として保存
+            
+            guard let bzrPth = bezierPath else {
+                fatalError("bezierPath Error")
+            }
 
             //Draw実行しDraw後のimage取得
-            let imageAfterDraw = drawGestureAtChanged(canvas, lastPoint: lastPoint!, newPoint: newPoint, bezierPath: bezierPath)
+            let imageAfterDraw = drawGestureAtChanged(canvas, lastPoint: lastPoint!, newPoint: newPoint, bezierPath: bzrPth)
             
             self.canvasView.image = imageAfterDraw                      //Draw画像をCanvasに上書き
             lastPoint = newPoint                                        //Point保存
@@ -192,6 +208,53 @@ class ViewController: UIViewController, UIScrollViewDelegate {  //UIScrollViewDe
         
     }
 
+    /**
+     Redボタンを押した時の動作
+     ペンを赤色にする
+     */
+    @IBAction func selectRed(sender: AnyObject) {
+        
+        drawColor = UIColor.redColor()      //赤色に変更する
+    }
 
+    /**
+     Greenボタンを押した時の動作
+     ペンを緑色にする
+     */
+    @IBAction func selectGreen(sender: AnyObject) {
+        
+        drawColor = UIColor.greenColor()    //緑色に変更する
+    }
+
+    /**
+     Blueボタンを押した時の動作
+     ペンを青色にする
+     */
+    @IBAction func selectBlue(sender: AnyObject) {
+        
+        drawColor = UIColor.blueColor()     //青色に変更する
+        
+    }
+
+    /**
+     Blackボタンを押した時の動作
+     ペンを黒色にする
+     */
+    @IBAction func selecBlack(sender: AnyObject) {
+        
+        drawColor = UIColor.blackColor()    //黒色に変更する
+    }
+
+    /**
+     スライダーを動かした時の動作
+     ペンの太さを変更する
+     */
+    @IBAction func slideSlider(sender: AnyObject) {
+        
+        lineWidth = CGFloat(sliderValue.value) * scale
+ 
+    }
+    
+    
 }
 
