@@ -52,6 +52,13 @@
                                     <action selector="pressRedoButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xqn-YJ-0Kx"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPu-z8-sCE">
+                                <rect key="frame" x="314" y="28" width="34" height="30"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="pressSaveButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EAk-TR-Dkk"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ekv-m6-ouy">
                                 <rect key="frame" x="23" y="562" width="30" height="30"/>
                                 <state key="normal" title="Red"/>
@@ -118,9 +125,11 @@
                             <constraint firstItem="WGi-K7-Xfz" firstAttribute="centerY" secondItem="ekv-m6-ouy" secondAttribute="centerY" id="gjU-ps-Jco"/>
                             <constraint firstItem="ekv-m6-ouy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="7" id="gzk-hA-CAl"/>
                             <constraint firstItem="nzX-Jy-lOW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="27" id="i3t-lc-V8C"/>
+                            <constraint firstAttribute="trailing" secondItem="HPu-z8-sCE" secondAttribute="trailing" constant="27" id="idi-8p-74H"/>
                             <constraint firstItem="UFb-uM-jcb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="1.25" id="izH-Mj-bkO"/>
                             <constraint firstItem="xSp-4T-DiP" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="lab-7X-IUC"/>
                             <constraint firstItem="dTa-pV-K9o" firstAttribute="leading" secondItem="ZN1-xM-ynJ" secondAttribute="trailing" constant="10" id="neZ-IR-veP"/>
+                            <constraint firstItem="HPu-z8-sCE" firstAttribute="centerY" secondItem="gjK-3L-h0L" secondAttribute="centerY" id="u6Z-hb-8Kp"/>
                             <constraint firstItem="xSp-4T-DiP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="uQB-pE-u8R"/>
                             <constraint firstItem="ZX1-9z-DwH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="12" id="uU5-b0-EUQ"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZX1-9z-DwH" secondAttribute="bottom" constant="75" id="uaf-Ze-VWC"/>

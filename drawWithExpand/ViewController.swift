@@ -299,7 +299,16 @@ class ViewController: UIViewController, UIScrollViewDelegate {  //UIScrollViewDe
         currentDrawNumber += 1
         
     }
-    
+
+    /**
+     Saveボタンを押した時の動作
+     お絵描きをカメラロールへ保存する
+     */
+    @IBAction func pressSaveButton(sender: AnyObject) {
+        
+        UIImageWriteToSavedPhotosAlbum(self.canvasView.image!, self, nil, nil)  //カメラロールへの保存
+        
+    }
     
 }
 
