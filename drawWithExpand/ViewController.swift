@@ -19,6 +19,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {  //UIScrollViewDe
     //var bezierPath = UIBezierPath()         //お絵描きに使用
     var bezierPath: UIBezierPath?           //お絵描きに使用
     var drawColor = UIColor()               //描画色の保存用
+    var currentDrawNumber = 0               //現在の表示しているは何回めのタッチか
+    var saveImageArray = [UIImage]()        //Undo/Redo用にUIImageを保存
     
     //let defaultLineWidth: CGFloat = 10.0    //デフォルトの線の太さ
     let scale = CGFloat(30)                   //線の太さに変換するためにSlider値にかける係数
@@ -61,6 +63,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {  //UIScrollViewDe
         
         //実際のお絵描きで言うキャンバスの準備 (=何も描かれていないUIImageの作成)
         prepareCanvas()
+        
+        saveImageArray.append(self.canvasView.image!)       //配列にcanvasView.imageを保存
         
     }
 
@@ -133,6 +137,19 @@ class ViewController: UIViewController, UIScrollViewDelegate {  //UIScrollViewDe
             lastPoint = newPoint                                        //Point保存
             
         case .Ended:
+
+            //currentDrawNumberとsaveImageArray配列数が矛盾無きまでremoveLastする
+            while currentDrawNumber != saveImageArray.count - 1 {
+                saveImageArray.removeLast()
+            }
+            
+            currentDrawNumber += 1
+            saveImageArray.append(self.canvasView.image!)               //配列にcanvasView.imageを保存
+            
+            if currentDrawNumber != saveImageArray.count - 1 {
+                fatalError("index Error")
+            }
+            
             print("Finish dragging")
             
         default:
@@ -253,6 +270,34 @@ class ViewController: UIViewController, UIScrollViewDelegate {  //UIScrollViewDe
         
         lineWidth = CGFloat(sliderValue.value) * scale
  
+    }
+
+    /**
+     Undoボタンを押した時の動作
+     Undoを実行する
+     */
+    @IBAction func pressUndoButton(sender: AnyObject) {
+        
+        if currentDrawNumber <= 0 {return}
+        
+        self.canvasView.image = saveImageArray[currentDrawNumber - 1]   //保存している直前imageに置き換える
+        
+        currentDrawNumber -= 1
+        
+    }
+    
+    /**
+     Redoボタンを押した時の動作
+     Redoを実行する
+     */
+    @IBAction func pressRedoButton(sender: AnyObject) {
+        
+        if currentDrawNumber + 1 > saveImageArray.count - 1 {return}
+        
+        self.canvasView.image = saveImageArray[currentDrawNumber + 1]   //保存しているUndo前のimageに置き換える
+        
+        currentDrawNumber += 1
+        
     }
     
     

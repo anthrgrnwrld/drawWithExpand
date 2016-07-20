@@ -38,6 +38,20 @@
                                     <constraint firstItem="0GA-SM-oTU" firstAttribute="leading" secondItem="xSp-4T-DiP" secondAttribute="leading" id="ziF-Pl-95b"/>
                                 </constraints>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nzX-Jy-lOW">
+                                <rect key="frame" x="27" y="28" width="38" height="30"/>
+                                <state key="normal" title="Undo"/>
+                                <connections>
+                                    <action selector="pressUndoButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Qc-1R-4Jr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjK-3L-h0L">
+                                <rect key="frame" x="94" y="28" width="36" height="30"/>
+                                <state key="normal" title="Redo"/>
+                                <connections>
+                                    <action selector="pressRedoButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xqn-YJ-0Kx"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ekv-m6-ouy">
                                 <rect key="frame" x="23" y="562" width="30" height="30"/>
                                 <state key="normal" title="Red"/>
@@ -87,12 +101,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="gjK-3L-h0L" firstAttribute="centerY" secondItem="nzX-Jy-lOW" secondAttribute="centerY" id="0UU-mV-0dG"/>
+                            <constraint firstItem="gjK-3L-h0L" firstAttribute="leading" secondItem="nzX-Jy-lOW" secondAttribute="trailing" constant="29" id="7Vr-6X-X0d"/>
                             <constraint firstItem="dTa-pV-K9o" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BNr-an-lXT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ZX1-9z-DwH" secondAttribute="trailing" constant="12" id="GKD-Ke-J9L"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ekv-m6-ouy" secondAttribute="bottom" constant="75" id="J3c-Dc-nZI"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dTa-pV-K9o" secondAttribute="bottom" constant="32" id="Mfi-wC-9UY"/>
                             <constraint firstItem="UFb-uM-jcb" firstAttribute="centerY" secondItem="ZX1-9z-DwH" secondAttribute="centerY" id="Mut-lc-zk9"/>
                             <constraint firstItem="xSp-4T-DiP" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="Na5-jK-wYL"/>
+                            <constraint firstItem="nzX-Jy-lOW" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="RCR-K5-egd"/>
                             <constraint firstItem="WGi-K7-Xfz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="0.75" id="Rd6-3t-v6Q"/>
                             <constraint firstItem="dTa-pV-K9o" firstAttribute="width" secondItem="xSp-4T-DiP" secondAttribute="width" multiplier="0.7" id="TbP-hh-ptD"/>
                             <constraint firstItem="ZN1-xM-ynJ" firstAttribute="centerY" secondItem="dTa-pV-K9o" secondAttribute="centerY" id="UWw-mJ-QGr"/>
@@ -100,6 +117,7 @@
                             <constraint firstItem="ekv-m6-ouy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="12" id="dq8-8V-cbj"/>
                             <constraint firstItem="WGi-K7-Xfz" firstAttribute="centerY" secondItem="ekv-m6-ouy" secondAttribute="centerY" id="gjU-ps-Jco"/>
                             <constraint firstItem="ekv-m6-ouy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="7" id="gzk-hA-CAl"/>
+                            <constraint firstItem="nzX-Jy-lOW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="27" id="i3t-lc-V8C"/>
                             <constraint firstItem="UFb-uM-jcb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="1.25" id="izH-Mj-bkO"/>
                             <constraint firstItem="xSp-4T-DiP" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="lab-7X-IUC"/>
                             <constraint firstItem="dTa-pV-K9o" firstAttribute="leading" secondItem="ZN1-xM-ynJ" secondAttribute="trailing" constant="10" id="neZ-IR-veP"/>
