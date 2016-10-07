@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class ViewController: UIViewController, UIScrollViewDelegate {  //UIScrollViewDelegateを追加
 
@@ -79,7 +80,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {  //UIScrollViewDe
         UIColor.whiteColor().setFill()                                              //白色塗りつぶし作業1
         UIRectFill(canvasRect)                                                      //白色塗りつぶし作業2
         firstCanvasImage.drawInRect(canvasRect)                                     //firstCanvasImageの内容を描く(真っ白)
-        firstCanvasImage = UIGraphicsGetImageFromCurrentImageContext()              //何も描かれてないUIImageを取得
+        firstCanvasImage = UIGraphicsGetImageFromCurrentImageContext()!              //何も描かれてないUIImageを取得
         canvasView.contentMode = .ScaleAspectFit                                    //contentModeの設定
         canvasView.image = firstCanvasImage                                         //画面の表示を更新
         UIGraphicsEndImageContext()                                                 //コンテキストを閉じる
@@ -186,7 +187,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {  //UIScrollViewDe
         let imageAfterDraw = UIGraphicsGetImageFromCurrentImageContext()                //Draw後の画像
         UIGraphicsEndImageContext()                                                     //コンテキストを閉じる
         
-        return imageAfterDraw
+        return imageAfterDraw!
     }
 
     /**
@@ -309,6 +310,29 @@ class ViewController: UIViewController, UIScrollViewDelegate {  //UIScrollViewDe
         UIImageWriteToSavedPhotosAlbum(self.canvasView.image!, self, nil, nil)  //カメラロールへの保存
         
     }
+
+    /**
+     Instagramボタンを押した時の動作
+     URLスキームを使ってInstagramアプリのライブラリ画面を表示する
+     */
+    @IBAction func pressInstagramButton(sender: AnyObject) {
+ 
+        var imageIdentifier: String?
+        PHPhotoLibrary.sharedPhotoLibrary().performChanges({ () -> Void in
+            let createAssetRequest = PHAssetChangeRequest.creationRequestForAssetFromImage(self.canvasView.image!)
+            let placeHolder = createAssetRequest.placeholderForCreatedAsset
+            imageIdentifier = placeHolder!.localIdentifier
+            }, completionHandler: { (success, error) -> Void in
+                print("Finished adding asset.\(success ? "success" : "error")")
+                print("\(imageIdentifier)")
+                let testURL = NSURL(string: "instagram://library?LocalIdentifier=" + imageIdentifier!)
+                if UIApplication.sharedApplication().canOpenURL(testURL!) {
+                    UIApplication.sharedApplication().openURL(testURL!)
+                }
+        })
+        
+    }
+
     
 }
 

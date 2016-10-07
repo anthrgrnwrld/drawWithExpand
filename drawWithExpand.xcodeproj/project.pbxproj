@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3671EB931DA7C17C00B6643D /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3671EB921DA7C17C00B6643D /* Photos.framework */; };
 		36BCD7451D2F2731008730F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCD7441D2F2731008730F6 /* AppDelegate.swift */; };
 		36BCD7471D2F2731008730F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCD7461D2F2731008730F6 /* ViewController.swift */; };
 		36BCD74A1D2F2731008730F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BCD7481D2F2731008730F6 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3671EB921DA7C17C00B6643D /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		36BCD7411D2F2731008730F6 /* drawWithExpand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = drawWithExpand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36BCD7441D2F2731008730F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36BCD7461D2F2731008730F6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3671EB931DA7C17C00B6643D /* Photos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +77,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3671EB911DA7C17C00B6643D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3671EB921DA7C17C00B6643D /* Photos.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		36BCD7381D2F2730008730F6 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +92,7 @@
 				36BCD7581D2F2731008730F6 /* drawWithExpandTests */,
 				36BCD7631D2F2731008730F6 /* drawWithExpandUITests */,
 				36BCD7421D2F2731008730F6 /* Products */,
+				3671EB911DA7C17C00B6643D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -188,19 +200,22 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Masaki Horimoto";
 				TargetAttributes = {
 					36BCD7401D2F2730008730F6 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = WBV73EJ8V2;
+						LastSwiftMigration = 0800;
 					};
 					36BCD7541D2F2731008730F6 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 						TestTargetID = 36BCD7401D2F2730008730F6;
 					};
 					36BCD75F1D2F2731008730F6 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 						TestTargetID = 36BCD7401D2F2730008730F6;
 					};
 				};
@@ -327,8 +342,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -372,8 +389,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -392,6 +411,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -407,6 +427,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.anthrgrnwrld.drawWithExpand;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -421,6 +442,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.anthrgrnwrld.drawWithExpand;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -432,6 +454,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.anthrgrnwrld.drawWithExpandTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/drawWithExpand.app/drawWithExpand";
 			};
 			name = Debug;
@@ -444,6 +467,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.anthrgrnwrld.drawWithExpandTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/drawWithExpand.app/drawWithExpand";
 			};
 			name = Release;
@@ -455,6 +479,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.anthrgrnwrld.drawWithExpandUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_TARGET_NAME = drawWithExpand;
 			};
 			name = Debug;
@@ -466,6 +491,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.anthrgrnwrld.drawWithExpandUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_TARGET_NAME = drawWithExpand;
 			};
 			name = Release;
