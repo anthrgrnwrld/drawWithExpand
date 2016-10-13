@@ -49,6 +49,12 @@
                                     <action selector="pressRedoButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xqn-YJ-0Kx"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mN3-Lt-UM5">
+                                <state key="normal" title="OpenIn"/>
+                                <connections>
+                                    <action selector="pressOpenIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BR9-qp-heq"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BbG-aq-XMa">
                                 <state key="normal" title="Instagram"/>
                                 <connections>
@@ -108,6 +114,7 @@
                             <constraint firstItem="dTa-pV-K9o" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BNr-an-lXT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ZX1-9z-DwH" secondAttribute="trailing" constant="12" id="GKD-Ke-J9L"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ekv-m6-ouy" secondAttribute="bottom" constant="75" id="J3c-Dc-nZI"/>
+                            <constraint firstItem="BbG-aq-XMa" firstAttribute="leading" secondItem="mN3-Lt-UM5" secondAttribute="trailing" constant="20" id="JZF-F5-I6c"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dTa-pV-K9o" secondAttribute="bottom" constant="32" id="Mfi-wC-9UY"/>
                             <constraint firstItem="UFb-uM-jcb" firstAttribute="centerY" secondItem="ZX1-9z-DwH" secondAttribute="centerY" id="Mut-lc-zk9"/>
                             <constraint firstItem="xSp-4T-DiP" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="Na5-jK-wYL"/>
@@ -126,6 +133,7 @@
                             <constraint firstItem="UFb-uM-jcb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="1.25" id="izH-Mj-bkO"/>
                             <constraint firstItem="xSp-4T-DiP" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="lab-7X-IUC"/>
                             <constraint firstItem="dTa-pV-K9o" firstAttribute="leading" secondItem="ZN1-xM-ynJ" secondAttribute="trailing" constant="10" id="neZ-IR-veP"/>
+                            <constraint firstItem="mN3-Lt-UM5" firstAttribute="centerY" secondItem="gjK-3L-h0L" secondAttribute="centerY" id="p6Q-Fy-nhb"/>
                             <constraint firstItem="HPu-z8-sCE" firstAttribute="centerY" secondItem="gjK-3L-h0L" secondAttribute="centerY" id="u6Z-hb-8Kp"/>
                             <constraint firstItem="xSp-4T-DiP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="uQB-pE-u8R"/>
                             <constraint firstItem="ZX1-9z-DwH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="12" id="uU5-b0-EUQ"/>
@@ -136,9 +144,9 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="dq8-8V-cbj"/>
                                 <exclude reference="yHw-gd-dyC"/>
                                 <exclude reference="uU5-b0-EUQ"/>
-                                <exclude reference="dq8-8V-cbj"/>
                             </mask>
                         </variation>
                     </view>

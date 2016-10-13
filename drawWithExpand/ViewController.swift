@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 
-class ViewController: UIViewController, UIScrollViewDelegate {  //UIScrollViewDelegateを追加
+class ViewController: UIViewController, UIScrollViewDelegate, UIDocumentInteractionControllerDelegate {  //UIScrollViewDelegateを追加
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var canvasView: UIImageView!
@@ -25,6 +25,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {  //UIScrollViewDe
     
     //let defaultLineWidth: CGFloat = 10.0    //デフォルトの線の太さ
     let scale = CGFloat(30)                   //線の太さに変換するためにSlider値にかける係数
+    
+    var interactionController : UIDocumentInteractionController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -333,6 +335,24 @@ class ViewController: UIViewController, UIScrollViewDelegate {  //UIScrollViewDe
         
     }
 
+    @IBAction func pressOpenIn(sender: AnyObject) {
+        let imageData = UIImageJPEGRepresentation(self.canvasView.image!, 1.0)
+        let tmpDirectoryPath = NSTemporaryDirectory()   //tmpディレクトリを取得
+        let imageName = "tmp.jpg"
+        let imagePath = tmpDirectoryPath + imageName
+        let imageURLForOptionMenu = NSURL(fileURLWithPath: imagePath)
+        
+        do {
+            try imageData?.writeToURL(imageURLForOptionMenu, options: .AtomicWrite)
+        } catch {
+            fatalError("can't save image to tmp directory.")
+        }
+        
+        interactionController = UIDocumentInteractionController(URL: imageURLForOptionMenu)
+        interactionController?.delegate = self
+        self.interactionController?.UTI = "public.jpg"
+        interactionController?.presentOptionsMenuFromRect(self.view.frame, inView: self.view, animated: true)
+    }
     
 }
 
